@@ -1,14 +1,14 @@
-package com.model;
+package com.project.model;
 
-public class Sugar 
+public class Water 
 {
-	private int quantity;
+private int quantity;
 	
-	public Sugar() {
+	public Water() {
 		super();
 	}
 
-	public Sugar(int quantity) {
+	public Water(int quantity) {
 		super();
 		this.quantity = quantity;
 	}
