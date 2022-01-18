@@ -1,6 +1,8 @@
-package com.project.model;
+package model;
 
-public class Sugar 
+import java.io.*;
+
+public class Sugar implements Serializable  
 {
 	private int quantity;
 	

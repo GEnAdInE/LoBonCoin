@@ -1,22 +1,35 @@
-package com.project.model;
+package model;
 
-public class Drink 
+import java.io.*;
+
+public class Drink implements Serializable
 {
+	private int idDrink;
+	
 	private String name;
 	
 	private String description;
 	
-	private float price;
+	private double price;
 
 	public Drink() {
 		super();
 	}
 
-	public Drink(String name, String description, float price) {
+	public Drink(int idDrink, String name, String description, double price) {
 		super();
+		this.idDrink = idDrink;
 		this.name = name;
 		this.description = description;
 		this.price = price;
+	}
+
+	public int getIdDrink() {
+		return idDrink;
+	}
+
+	public void setIdDrink(int idDrink) {
+		this.idDrink = idDrink;
 	}
 
 	public String getName() {
@@ -27,7 +40,7 @@ public class Drink
 		return description;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
@@ -39,9 +52,15 @@ public class Drink
 		this.description = description;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Drink [idDrink=" + idDrink + ", name=" + name + ", description=" + description + ", price=" + price
+				+ "]";
+	}
+
+
 }

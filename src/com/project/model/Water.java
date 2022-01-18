@@ -1,6 +1,8 @@
-package com.project.model;
+package model;
 
-public class Water 
+import java.io.*;
+
+public class Water implements Serializable
 {
 private int quantity;
 	

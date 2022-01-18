@@ -1,9 +1,10 @@
-package com.project.model;
+package model;
 
+import java.io.*;
 import java.time.*;
 
-public class Order 
-{
+public class Order implements Serializable
+{	
 	private Drink drink;
 	
 	private Sugar sugar;
