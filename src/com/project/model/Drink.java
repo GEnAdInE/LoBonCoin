@@ -4,6 +4,8 @@ import java.io.*;
 
 public class Drink implements Serializable
 {
+	private static final long serialVersionUID = 2853331064312361885L;
+
 	private int idDrink;
 	
 	private String name;

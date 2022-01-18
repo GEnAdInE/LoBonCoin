@@ -4,7 +4,10 @@ import java.io.*;
 
 public class Water implements Serializable
 {
-private int quantity;
+	
+	private static final long serialVersionUID = 7298842972573825230L;
+	
+	private int quantity;
 	
 	public Water() {
 		super();
@@ -21,5 +24,10 @@ private int quantity;
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "Water [quantity=" + quantity + "]";
 	}
 }

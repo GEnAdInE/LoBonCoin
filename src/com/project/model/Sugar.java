@@ -4,6 +4,13 @@ import java.io.*;
 
 public class Sugar implements Serializable  
 {
+	private static final long serialVersionUID = -2576563989239538392L;
+
+	@Override
+	public String toString() {
+		return "Sugar [quantity=" + quantity + "]";
+	}
+
 	private int quantity;
 	
 	public Sugar() {
