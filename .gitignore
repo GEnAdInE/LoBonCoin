@@ -1,6 +1,7 @@
-/.metadata/
-/MachineACafe/bin/
-/MachineACafe/src/
-/MachineACafe/.settings/
-/MachineACafe/.project
-/MachineACafe/.classpath
+.idea
+.settings
+.classpath
+.project
+classes
+*.iml
+bin
