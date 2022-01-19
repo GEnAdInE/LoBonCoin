@@ -1,8 +1,8 @@
-package dataController;
+package com.project.dataController;
 
 import java.io.*;
 import java.util.*;
-import model.Drink;
+import com.project.model.Drink;
 
 public class DrinkController 
 {

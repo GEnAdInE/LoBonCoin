@@ -1,9 +1,9 @@
-package dataController;
+package com.project.dataController;
 
 import java.io.*;
 
-import model.Sugar;
-import model.Water;
+import com.project.model.Sugar;
+import com.project.model.Water;
 
 public class SugarController 
 {

@@ -1,11 +1,11 @@
-package dataController;
+package com.project.dataController;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import model.Water;
+import com.project.model.Water;
 
 public class WaterController
 {

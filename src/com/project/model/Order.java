@@ -1,4 +1,4 @@
-package model;
+package com.project.model;
 
 import java.io.*;
 import java.time.*;

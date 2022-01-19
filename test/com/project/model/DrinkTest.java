@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DrinkTest {
-    Drink myTestDrink = new Drink("Toto","Des",5);
+    Drink myTestDrink = new Drink(1,"Toto","Des",5);
 
     @Test
     void getName() {
@@ -39,5 +39,16 @@ class DrinkTest {
     void setPrice() {
         myTestDrink.setPrice(69);
         assertEquals(69,myTestDrink.getPrice());
+    }
+
+    @Test
+    void getIdDrink() {
+        assertEquals(1,myTestDrink.getIdDrink());
+    }
+
+    @Test
+    void setIdDrink() {
+        myTestDrink.setIdDrink(89);
+        assertEquals(89,myTestDrink.getIdDrink());
     }
 }
