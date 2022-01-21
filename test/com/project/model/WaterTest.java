@@ -22,12 +22,12 @@ class WaterTest {
     @Test
     void getQuantity() 
     {
-    	assertsEquals(100,waterTest.getQuantity());
+    	assertEquals(100,waterTest.getQuantity());
     }
 
     @Test
     void setQuantity() {
     	waterTest.setQuantity(500);
-    	assertsEquals(500, waterTest.getQuantity());
+    	assertEquals(500, waterTest.getQuantity());
     }
 }

@@ -23,12 +23,12 @@ class SugarTest {
     @Test
     void getQuantity() 
     {
-    	assertsEquals(100,sugarTest.getQuantity());
+    	assertEquals(100,sugarTest.getQuantity());
     }
 
     @Test
     void setQuantity() {
     	sugarTest.setQuantity(500);
-    	assertsEquals(500, sugarTest.getQuantity());
+    	assertEquals(500, sugarTest.getQuantity());
     }
 }
