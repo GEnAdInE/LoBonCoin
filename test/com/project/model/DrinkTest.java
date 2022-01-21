@@ -4,12 +4,29 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DrinkTest {
-    Drink myTestDrink = new Drink(1,"Toto","Des",5);
+public class DrinkTest extends TestCase{
+	
+	Drink myTestDrink;
 
+	public DrinkTest(String testMethodName)
+	{
+		super(testMethodName);
+	}
+	
+	@BeforeAll
+	void setUp()
+	{
+		myTestDrink = = new Drink(1,"Toto","Des",5);
+	}
+	
+	@AfterAll
+	void end()
+	{
+		myTestDrink = null;
+	}
+	
     @Test
     void getName() {
-
         assertEquals("Toto",myTestDrink.getName());
     }
 
