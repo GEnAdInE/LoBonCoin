@@ -1,19 +1,20 @@
 package com.project.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class WaterTest {
 
 	Water waterTest;
 
-	@BeforeAll
+	@BeforeEach
 	void setUp()
 	{
 		waterTest = new Water(100);
 	}
 	
-	@AfterAll
+	@AfterEach
 	void end()
 	{
 		waterTest = null;

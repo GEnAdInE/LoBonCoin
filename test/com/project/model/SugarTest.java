@@ -1,6 +1,6 @@
 package com.project.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,13 +8,13 @@ class SugarTest {
 	
 	Sugar sugarTest;
 
-	@BeforeAll
+	@BeforeEach
 	void setUp()
 	{
 		sugarTest = new Sugar(100);
 	}
 	
-	@AfterAll
+	@AfterEach
 	void end()
 	{
 		sugarTest = null;

@@ -1,25 +1,22 @@
 package com.project.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DrinkTest extends TestCase{
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class DrinkTest{
 	
 	Drink myTestDrink;
 
-	public DrinkTest(String testMethodName)
-	{
-		super(testMethodName);
-	}
-	
-	@BeforeAll
+
+	@BeforeEach
 	void setUp()
 	{
-		myTestDrink = = new Drink(1,"Toto","Des",5);
+		myTestDrink = new Drink(1,"Toto","Des",5);
 	}
 	
-	@AfterAll
+	@AfterEach
 	void end()
 	{
 		myTestDrink = null;

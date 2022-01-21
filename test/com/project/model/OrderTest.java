@@ -1,46 +1,47 @@
 package com.project.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 
+
 class OrderTest {
 
 	Order orderTest;
 
-	@BeforeAll
+	@BeforeEach
 	void setUp()
 	{
 		Drink drink = new Drink(0, "drink", "drinkDesc", 1);
 		Water water = new Water(75);
 		Sugar sugar = new Sugar(10);
 		
-		orderTest = new Order(drink, water, sugar, 1, LocalDateTime.MIN, false);
+		orderTest = new Order(drink, sugar, water, 1, LocalDateTime.MIN, false);
 	}
-	
-	@AfterAll
+
+	@AfterEach
 	void end()
 	{
 		orderTest = null;
 	}
 	
     @Test
-    void isCanceled() 
+    void isCanceled()
     {
     	assertEquals(false,orderTest.isCanceled());
     }
 
     @Test
-    void setCanceled() 
+    void setCanceled()
     {
     	orderTest.setCanceled(true);
     	assertEquals(true, orderTest.isCanceled());
     }
 
     @Test
-    void getDrink() 
+    void getDrink()
     {
     	assertEquals(new Drink(0, "drink", "drinkDesc", 1), orderTest.getDrink());
     }
@@ -51,7 +52,7 @@ class OrderTest {
     }
 
     @Test
-    void getWater() 
+    void getWater()
     {
     	assertEquals(new Water(75), orderTest.getWater());
     }
@@ -68,16 +69,16 @@ class OrderTest {
     }
 
     @Test
-    void setSugar() 
+    void setSugar()
     {
     	orderTest.setSugar(new Sugar(5));
     	assertEquals(new Sugar(5), orderTest.getSugar());
     }
 
     @Test
-    void setWater() 
+    void setWater()
     {
-    	orderTest.setWater(nes Water(35));
+    	orderTest.setWater(new Water(35));
     	assertEquals(new Water(35), orderTest.getWater());
     }
 
