@@ -1,0 +1,192 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WaterController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.project.dataController</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WaterController (com.project.dataController)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WaterController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.project.dataController;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.io.FileInputStream;
+<i>4</i>&nbsp;import java.io.FileOutputStream;
+<i>5</i>&nbsp;import java.io.ObjectInputStream;
+<i>6</i>&nbsp;import java.io.ObjectOutputStream;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import com.project.model.Water;
+<i>9</i>&nbsp;
+<b class="nc"><i>10</i>&nbsp;public class WaterController</b>
+<i>11</i>&nbsp;{
+<i>12</i>&nbsp;	public static boolean isWaterAvailable()
+<i>13</i>&nbsp;	{
+<b class="nc"><i>14</i>&nbsp;		Water water = getWatterFromFile();</b>
+<b class="nc"><i>15</i>&nbsp;		System.out.print(water.toString());</b>
+<b class="nc"><i>16</i>&nbsp;		if(water == null)</b>
+<b class="nc"><i>17</i>&nbsp;			return false;</b>
+<b class="nc"><i>18</i>&nbsp;		if(water.getQuantity() &gt; 0)</b>
+<i>19</i>&nbsp;		{
+<b class="nc"><i>20</i>&nbsp;			return true;</b>
+<i>21</i>&nbsp;		}
+<b class="nc"><i>22</i>&nbsp;		return false;</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;	}
+<i>25</i>&nbsp;	
+<i>26</i>&nbsp;	public static int getWaterAvailable()
+<i>27</i>&nbsp;	{
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;		Water water = getWatterFromFile();</b>
+<b class="nc"><i>30</i>&nbsp;		if(water == null)</b>
+<b class="nc"><i>31</i>&nbsp;			return 0;</b>
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;		return water.getQuantity();</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;	}
+<i>36</i>&nbsp;	
+<i>37</i>&nbsp;	public static void consumeWater(int quantity)
+<i>38</i>&nbsp;	{
+<i>39</i>&nbsp;		try 
+<i>40</i>&nbsp;		{
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;			
+<b class="nc"><i>43</i>&nbsp;			Water water = getWatterFromFile();</b>
+<b class="nc"><i>44</i>&nbsp;			if(water == null)</b>
+<b class="nc"><i>45</i>&nbsp;				return;</b>
+<b class="nc"><i>46</i>&nbsp;			water.setQuantity(water.getQuantity() - quantity);</b>
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;			FileOutputStream fos = new FileOutputStream(&quot;waterQuantity.dat&quot;);</b>
+<b class="nc"><i>49</i>&nbsp;			ObjectOutputStream oos = new ObjectOutputStream(fos);</b>
+<i>50</i>&nbsp;			
+<b class="nc"><i>51</i>&nbsp;			oos.writeObject(water);</b>
+<i>52</i>&nbsp;			
+<b class="nc"><i>53</i>&nbsp;			oos.close();</b>
+<b class="nc"><i>54</i>&nbsp;			fos.close();</b>
+<i>55</i>&nbsp;		} 
+<b class="nc"><i>56</i>&nbsp;		catch (Exception e) </b>
+<i>57</i>&nbsp;		{
+<b class="nc"><i>58</i>&nbsp;			e.printStackTrace();</b>
+<i>59</i>&nbsp;			
+<b class="nc"><i>60</i>&nbsp;		}</b>
+<b class="nc"><i>61</i>&nbsp;		return;</b>
+<i>62</i>&nbsp;	}
+<i>63</i>&nbsp;	
+<i>64</i>&nbsp;	public static void addWater(int quantity)
+<i>65</i>&nbsp;	{
+<i>66</i>&nbsp;		try
+<i>67</i>&nbsp;		{
+<i>68</i>&nbsp;
+<b class="nc"><i>69</i>&nbsp;			Water water = getWatterFromFile();</b>
+<b class="nc"><i>70</i>&nbsp;			if(water == null)</b>
+<b class="nc"><i>71</i>&nbsp;				return;</b>
+<i>72</i>&nbsp;			
+<b class="nc"><i>73</i>&nbsp;			water.setQuantity(water.getQuantity() + quantity);</b>
+<i>74</i>&nbsp;			
+<b class="nc"><i>75</i>&nbsp;			FileOutputStream fos = new FileOutputStream(&quot;waterQuantity.dat&quot;);</b>
+<b class="nc"><i>76</i>&nbsp;			ObjectOutputStream oos = new ObjectOutputStream(fos);</b>
+<i>77</i>&nbsp;			
+<b class="nc"><i>78</i>&nbsp;			oos.writeObject(water);</b>
+<i>79</i>&nbsp;			
+<b class="nc"><i>80</i>&nbsp;			oos.close();</b>
+<b class="nc"><i>81</i>&nbsp;			fos.close();</b>
+<i>82</i>&nbsp;		} 
+<b class="nc"><i>83</i>&nbsp;		catch (Exception e)</b>
+<i>84</i>&nbsp;		{
+<b class="nc"><i>85</i>&nbsp;			e.printStackTrace();</b>
+<i>86</i>&nbsp;
+<b class="nc"><i>87</i>&nbsp;		}</b>
+<b class="nc"><i>88</i>&nbsp;		return;</b>
+<i>89</i>&nbsp;	}
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;	public static Water getWatterFromFile()
+<i>92</i>&nbsp;	{
+<i>93</i>&nbsp;		try {
+<b class="nc"><i>94</i>&nbsp;			FileInputStream fis = new FileInputStream(&quot;waterQuantity.dat&quot;);</b>
+<b class="nc"><i>95</i>&nbsp;			ObjectInputStream ois = new ObjectInputStream(fis);</b>
+<i>96</i>&nbsp;
+<b class="nc"><i>97</i>&nbsp;			Water water = (Water) ois.readObject();</b>
+<i>98</i>&nbsp;
+<b class="nc"><i>99</i>&nbsp;			ois.close();</b>
+<b class="nc"><i>100</i>&nbsp;			fis.close();</b>
+<b class="nc"><i>101</i>&nbsp;			return water;</b>
+<i>102</i>&nbsp;		}
+<b class="nc"><i>103</i>&nbsp;		catch (Exception e)</b>
+<i>104</i>&nbsp;		{
+<b class="nc"><i>105</i>&nbsp;			e.printStackTrace();</b>
+<b class="nc"><i>106</i>&nbsp;			return null;</b>
+<i>107</i>&nbsp;		}
+<i>108</i>&nbsp;	}
+<i>109</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-01-22 17:15</div>
+</div>
+</body>
+</html>

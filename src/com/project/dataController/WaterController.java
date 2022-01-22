@@ -11,62 +11,38 @@ public class WaterController
 {
 	public static boolean isWaterAvailable()
 	{
-		try 
-		{
-			FileInputStream fis = new FileInputStream("waterQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			Water water = (Water) ois.readObject();
-			
-			ois.close();
-			fis.close();
-			
-			if(water.getQuantity() > 0)
-			{
-				return true;
-			}
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+		Water water = getWatterFromFile();
+		System.out.print(water.toString());
+		if(water == null)
 			return false;
+		if(water.getQuantity() > 0)
+		{
+			return true;
 		}
 		return false;
+
 	}
 	
 	public static int getWaterAvailable()
 	{
-		try 
-		{
-			FileInputStream fis = new FileInputStream("waterQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			Water water = (Water) ois.readObject();
-			
-			ois.close();
-			fis.close();
-			
-			return water.getQuantity();
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		return 0;
+
+		Water water = getWatterFromFile();
+		if(water == null)
+			return 0;
+
+		return water.getQuantity();
+
 	}
 	
 	public static void consumeWater(int quantity)
 	{
 		try 
 		{
-			FileInputStream fis = new FileInputStream("waterQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
+
 			
-			Water water = (Water) ois.readObject();
-			
-			ois.close();
-			fis.close();
-			
+			Water water = getWatterFromFile();
+			if(water == null)
+				return;
 			water.setQuantity(water.getQuantity() - quantity);
 
 			FileOutputStream fos = new FileOutputStream("waterQuantity.dat");
@@ -87,15 +63,12 @@ public class WaterController
 	
 	public static void addWater(int quantity)
 	{
-		try 
+		try
 		{
-			FileInputStream fis = new FileInputStream("waterQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			Water water = (Water) ois.readObject();
-			
-			ois.close();
-			fis.close();
+
+			Water water = getWatterFromFile();
+			if(water == null)
+				return;
 			
 			water.setQuantity(water.getQuantity() + quantity);
 			
@@ -107,11 +80,30 @@ public class WaterController
 			oos.close();
 			fos.close();
 		} 
-		catch (Exception e) 
+		catch (Exception e)
 		{
 			e.printStackTrace();
-			
+
 		}
 		return;
+	}
+
+	public static Water getWatterFromFile()
+	{
+		try {
+			FileInputStream fis = new FileInputStream("waterQuantity.dat");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			Water water = (Water) ois.readObject();
+
+			ois.close();
+			fis.close();
+			return water;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
