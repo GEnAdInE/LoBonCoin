@@ -64,5 +64,21 @@ public class Drink implements Serializable
 				+ "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		if(!(obj instanceof Drink))
+		{
+			return false;
+		}
 
+		if(((Drink) obj).description.equals(this.description) && ((Drink) obj).idDrink == this.idDrink && ((Drink) obj).name.equals(this.name) && ((Drink) obj).price == this.price){
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

@@ -1,5 +1,7 @@
 package com.project.model;
 
+import org.mockito.internal.matchers.Or;
+
 import java.io.*;
 import java.time.*;
 
@@ -86,4 +88,22 @@ public class Order implements Serializable
 		return "Order [drink=" + drink + ", sugar=" + sugar + ", water=" + water + ", price=" + price + ", date=" + date
 				+ ", canceled=" + canceled + "]";
 	}
+
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		if(!(obj instanceof Order))
+		{
+			return false;
+		}
+
+		if(((Order) obj).price == this.price && ((Order) obj).canceled == this.canceled && ((Order) obj).date == this.date && ((Order) obj).drink == this.drink && ((Order) obj).sugar == this.sugar && ((Order) obj).water == this.water){
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }

@@ -29,4 +29,22 @@ public class Sugar implements Serializable
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	public boolean equals(Object obj) {
+		if(this == obj)
+			return true;
+		if(!(obj instanceof Sugar))
+		{
+			return false;
+		}
+
+		if(((Sugar) obj).quantity == this.quantity){
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 }
