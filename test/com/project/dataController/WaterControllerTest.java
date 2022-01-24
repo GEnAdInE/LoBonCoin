@@ -16,7 +16,7 @@ class WaterControllerTest {
     void setUp()
     {
         MockedStatic<WaterController> utils = Mockito.mockStatic(WaterController.class);
-        utils.when(WaterController::getWatterFromFile).thenReturn(new Water(5));
+        utils.when(WaterController::getWaterFromFile).thenReturn(new Water(5));
         utils.when(WaterController::getWaterAvailable).thenReturn(5);
         utils.when(WaterController::isWaterAvailable).thenReturn(true);
     }
@@ -35,7 +35,7 @@ class WaterControllerTest {
 
     @Test
     void getWatterFromFile(){
-        assertEquals(new Water(5),WaterController.getWatterFromFile());
+        assertEquals(new Water(5),WaterController.getWaterFromFile());
     }
 
 

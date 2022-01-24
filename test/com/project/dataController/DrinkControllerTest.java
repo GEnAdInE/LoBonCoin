@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class DrinkControllerTest {
+class DrinkControllerTest {	
 
     @BeforeAll
     void setUp()
@@ -29,6 +29,7 @@ class DrinkControllerTest {
         MockedStatic<DrinkController> utils = Mockito.mockStatic(DrinkController.class);
         utils.when(DrinkController::getAvailableDrink).thenReturn(StubArray);
     }
+ 
     @Test
     void getAvailableDrink() {
         ArrayList<Drink> Toto = new ArrayList<>();

@@ -11,7 +11,7 @@ public class WaterController
 {
 	public static boolean isWaterAvailable()
 	{
-		Water water = getWatterFromFile();
+		Water water = getWaterFromFile();
 		System.out.print(water.toString());
 		if(water == null)
 			return false;
@@ -26,7 +26,7 @@ public class WaterController
 	public static int getWaterAvailable()
 	{
 
-		Water water = getWatterFromFile();
+		Water water = getWaterFromFile();
 		if(water == null)
 			return 0;
 
@@ -36,59 +36,30 @@ public class WaterController
 	
 	public static void consumeWater(int quantity)
 	{
-		try 
-		{
-
-			
-			Water water = getWatterFromFile();
-			if(water == null)
-				return;
-			water.setQuantity(water.getQuantity() - quantity);
-
-			FileOutputStream fos = new FileOutputStream("waterQuantity.dat");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			
-			oos.writeObject(water);
-			
-			oos.close();
-			fos.close();
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			
-		}
+		Water water = getWaterFromFile();
+		if(water == null)
+			return;
+		water.setQuantity(water.getQuantity() - quantity);
+		
+		setWaterInFile(water);
+		
 		return;
 	}
 	
 	public static void addWater(int quantity)
 	{
-		try
-		{
-
-			Water water = getWatterFromFile();
-			if(water == null)
-				return;
+		Water water = getWaterFromFile();
+		if(water == null)
+			return;
+		
+		water.setQuantity(water.getQuantity() + quantity);
+		
+		setWaterInFile(water);
 			
-			water.setQuantity(water.getQuantity() + quantity);
-			
-			FileOutputStream fos = new FileOutputStream("waterQuantity.dat");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			
-			oos.writeObject(water);
-			
-			oos.close();
-			fos.close();
-		} 
-		catch (Exception e)
-		{
-			e.printStackTrace();
-
-		}
 		return;
 	}
 
-	public static Water getWatterFromFile()
+	public static Water getWaterFromFile()
 	{
 		try {
 			FileInputStream fis = new FileInputStream("waterQuantity.dat");
@@ -104,6 +75,26 @@ public class WaterController
 		{
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public static void setWaterInFile(Water water)
+	{
+		try {
+			
+			FileOutputStream fos = new FileOutputStream("waterQuantity.dat");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			
+			oos.writeObject(water);
+			
+			oos.close();
+			fos.close();
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return;
 		}
 	}
 }

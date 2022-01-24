@@ -9,62 +9,55 @@ public class SugarController
 {
 	public static boolean isSugarAvailable()
 	{
-		try 
-		{
-			FileInputStream fis = new FileInputStream("sugarQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			Sugar sugar = (Sugar) ois.readObject();
-			
-			ois.close();
-			fis.close();
-			
-			if(sugar.getQuantity() > 0)
-			{
-				return true;
-			}
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+		Sugar sugar = getSugarFromFile();
+		if(sugar == null)
 			return false;
+		
+		if(sugar.getQuantity() > 0)
+		{
+			return true;
 		}
 		return false;
 	}
 	
 	public static void consumeSugar(int weight)
 	{
-		try 
-		{
-			FileInputStream fis = new FileInputStream("sugarQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
+		Sugar sugar = getSugarFromFile();
+		if(sugar == null)
+			return;
 			
-			Sugar sugar = (Sugar) ois.readObject();
+		sugar.setQuantity(sugar.getQuantity() - weight);
 			
-			ois.close();
-			fis.close();
-			
-			sugar.setQuantity(sugar.getQuantity() - weight);
-			
-			FileOutputStream fos = new FileOutputStream("sugarQuantity.dat");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			
-			oos.writeObject(sugar);
-			
-			oos.close();
-			fos.close();
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			
-		}
+		setSugarInFile(sugar);
 		return;
 	}
 	
 	public static void addSugar(int weight)
 	{
-		try 
+		
+		Sugar sugar = getSugarFromFile();
+		if(sugar == null)
+			return;
+	
+		sugar.setQuantity(sugar.getQuantity() + weight);
+		
+		setSugarInFile(sugar);
+		
+		return;
+	}
+	
+	public static int getSugarAvailable()
+	{
+		Sugar sugar = getSugarFromFile();
+		if(sugar == null)
+			return 0;
+		
+		return sugar.getQuantity();
+	}
+	
+	public static Sugar getSugarFromFile()
+	{
+		try
 		{
 			FileInputStream fis = new FileInputStream("sugarQuantity.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -73,9 +66,20 @@ public class SugarController
 			
 			ois.close();
 			fis.close();
-
-			sugar.setQuantity(sugar.getQuantity() + weight);
 			
+			return sugar;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static void setSugarInFile(Sugar sugar)
+	{
+		try
+		{
 			FileOutputStream fos = new FileOutputStream("sugarQuantity.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			
@@ -83,33 +87,11 @@ public class SugarController
 			
 			oos.close();
 			fos.close();
-		} 
-		catch (Exception e) 
+		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
-			
 		}
 		return;
-	}
-	
-	public static int getSugarAvailable()
-	{
-		try 
-		{
-			FileInputStream fis = new FileInputStream("sugarQuantity.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-			Sugar sugar = (Sugar) ois.readObject();
-			
-			ois.close();
-			fis.close();
-			
-			return sugar.getQuantity();
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		return 0;
 	}
 }

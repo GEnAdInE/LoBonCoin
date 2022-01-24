@@ -111,7 +111,7 @@ public class Main
 			else
 			{
 				choice = -1;
-				while(choice < 0 && choice > 5)
+				while(choice < 0 || choice > 5)
 				{
 					System.out.println("Please choose your quantity of sugar [0-5] :");
 					choice = scanner.nextInt();	
@@ -131,6 +131,7 @@ public class Main
 			}
 			
 			answer = "";
+			order.setDate(LocalDateTime.now());
 			while(!answer.contains("y") && !answer.contains("Y")
 			   && !answer.contains("n") && !answer.contains("N"))
 			{
@@ -151,7 +152,6 @@ public class Main
 			SugarController.consumeSugar(order.getSugar().getQuantity());
 			WaterController.consumeWater(order.getWater().getQuantity());
 			
-			order.setDate(LocalDateTime.now());
 			order.setCanceled(false);
 			OrderController.saveOrder(order);
 			
