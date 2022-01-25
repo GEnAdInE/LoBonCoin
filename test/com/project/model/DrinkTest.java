@@ -70,4 +70,10 @@ class DrinkTest{
         myTestDrink.setIdDrink(89);
         assertEquals(89,myTestDrink.getIdDrink());
     }
+    
+    @Test
+    void equals()
+    { 	
+    	assertTrue(myTestDrink.equals(new Drink(1,"Toto","Des",5)));
+   	}
 }

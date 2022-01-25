@@ -36,4 +36,10 @@ class SugarTest {
     	sugarTest.setQuantity(500);
     	assertEquals(500, sugarTest.getQuantity());
     }
+    
+    @Test
+    void equals()
+    {
+    	assertTrue(sugarTest.equals(new Sugar(100)));
+    }
 }

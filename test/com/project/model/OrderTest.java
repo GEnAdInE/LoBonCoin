@@ -102,4 +102,10 @@ class OrderTest {
     	orderTest.setPrice(2);
     	assertEquals(2, orderTest.getPrice());
     }
+    
+    @Test
+    void equals()
+    {
+    	assertTrue(orderTest.equals(new Order(new Drink(0, "drink", "drinkDesc", 1), new Sugar(100), new Water(75), 1, LocalDateTime.MIN, false)));
+    }
 }
