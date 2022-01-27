@@ -42,6 +42,7 @@ class OrderTest {
     {
     	orderTest.setCanceled(true);
     	assertEquals(true, orderTest.isCanceled());
+    	orderTest.setCanceled(false);
     }
 
     @Test
@@ -70,6 +71,7 @@ class OrderTest {
     void setDrink() {
     	orderTest.setDrink(new Drink(1,"drinkSet", "drinkSetDesc", 2));
     	assertEquals(new Drink(1,"drinkSet", "drinkSetDesc", 2), orderTest.getDrink());
+    	orderTest.setDrink(new Drink(0, "drink", "drinkDesc", 1));
     }
 
     @Test
@@ -77,6 +79,7 @@ class OrderTest {
     {
     	orderTest.setSugar(new Sugar(5));
     	assertEquals(new Sugar(5), orderTest.getSugar());
+    	orderTest.setSugar(new Sugar(10));
     }
 
     @Test
@@ -84,12 +87,14 @@ class OrderTest {
     {
     	orderTest.setWater(new Water(35));
     	assertEquals(new Water(35), orderTest.getWater());
+    	orderTest.setWater(new Water(75));
     }
 
     @Test
     void setDate() {
     	orderTest.setDate(LocalDateTime.MAX);
     	assertEquals(LocalDateTime.MAX, orderTest.getDate());
+    	orderTest.setDate(LocalDateTime.MIN);
     }
 
     @Test
@@ -101,11 +106,12 @@ class OrderTest {
     void setPrice() {
     	orderTest.setPrice(2);
     	assertEquals(2, orderTest.getPrice());
+    	orderTest.setPrice(1);
     }
     
     @Test
     void equals()
     {
-    	assertTrue(orderTest.equals(new Order(new Drink(0, "drink", "drinkDesc", 1), new Sugar(100), new Water(75), 1, LocalDateTime.MIN, false)));
+    	assertTrue(orderTest.equals(new Order(new Drink(0, "drink", "drinkDesc", 1), new Sugar(10), new Water(75), 1, LocalDateTime.MIN, false)));
     }
 }

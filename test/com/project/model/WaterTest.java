@@ -1,16 +1,11 @@
 package com.project.model;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
 class WaterTest {
 
-	@Mock
 	Water waterTest;
 
 	@BeforeEach
@@ -29,9 +24,10 @@ class WaterTest {
 	void Water()
 	{
 		Water water = new Water(100);
-		assertTrue(new Water(100) instanceof Water);
+		
+		assertTrue(water instanceof Water);
     	
-    	assertTrue(waterTest.equals(new Water(100)));
+    	assertTrue(waterTest.equals(water));
 	}
 	
     @Test
@@ -44,6 +40,7 @@ class WaterTest {
     void setQuantity() {
     	waterTest.setQuantity(500);
     	assertEquals(500, waterTest.getQuantity());
+    	waterTest.setQuantity(100);
     }
     
     @Test

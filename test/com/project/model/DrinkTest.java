@@ -1,17 +1,11 @@
 package com.project.model;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
 class DrinkTest{
 
-    @Mock
     Drink myTestDrink;
 
 
@@ -46,18 +40,21 @@ class DrinkTest{
     void setName() {
         myTestDrink.setName("Titi");
         assertEquals("Titi",myTestDrink.getName());
+        myTestDrink.setName("Toto");
     }
 
     @Test
     void setDescription() {
         myTestDrink.setDescription("Das");
         assertEquals("Das",myTestDrink.getDescription());
+        myTestDrink.setDescription("Des");
     }
 
     @Test
     void setPrice() {
         myTestDrink.setPrice(69);
         assertEquals(69,myTestDrink.getPrice());
+        myTestDrink.setPrice(5);
     }
 
     @Test
@@ -69,6 +66,7 @@ class DrinkTest{
     void setIdDrink() {
         myTestDrink.setIdDrink(89);
         assertEquals(89,myTestDrink.getIdDrink());
+        myTestDrink.setIdDrink(1);
     }
     
     @Test
