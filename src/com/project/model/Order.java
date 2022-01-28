@@ -97,7 +97,7 @@ public class Order implements Serializable
 			return false;
 		}
 
-		if(((Order) obj).price == this.price && ((Order) obj).canceled == this.canceled && ((Order) obj).date == this.date && ((Order) obj).drink == this.drink && ((Order) obj).sugar == this.sugar && ((Order) obj).water == this.water){
+		if(((Order) obj).price == this.price && ((Order) obj).canceled == this.canceled && ((Order) obj).date == this.date && ((Order) obj).drink.equals(this.drink) && ((Order) obj).sugar.equals(this.sugar) && ((Order) obj).water.equals(this.water)){
 			return true;
 		}
 		else

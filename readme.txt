@@ -10,3 +10,8 @@ L'application émule donc une machine a café permettant à l'utilisateur de cho
 ATTENTION :
 Pour que l'application fonctionne correctement, il faut ajouter au projet les fichier .dat founis avec les sources
 ou au préalable créer des fichiers contenant les boissons, la quantité d'eau disponible, la quantité de sucre disponible et une liste vide d'historique de commande sérialisés.
+
+
+RESULTAT DE TEST
+Un resultat du coverage est disponible dans le dossier coverageRepport , a noté que le coverage n'a pas l'air de vouloir prendre en compte les tests des controllers
+Un resultat de chaque test unitaire est disponible dans le dossier UnitTestResult
